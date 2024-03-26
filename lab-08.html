@@ -400,11 +400,46 @@ titles for the IMDb charts.</p>
 <p>The last 10 are not actural movie titles - those are the contents in
 the bottom of the page.</p>
 <pre class="r"><code>print(tail(titles,10))</code></pre>
-<pre><code>##  [1] &quot;Top Box Office (US)&quot;       &quot;Most Popular Movies&quot;      
-##  [3] &quot;Top Rated English Movies&quot;  &quot;Most Popular TV Shows&quot;    
-##  [5] &quot;Top 250 TV Shows&quot;          &quot;Lowest Rated Movies&quot;      
-##  [7] &quot;Most Popular Celebs&quot;       &quot;Movie News&quot;               
+<pre><code>##  [1] &quot;Charts&quot;                    &quot;Top Box Office (US)&quot;      
+##  [3] &quot;Most Popular Movies&quot;       &quot;Top Rated English Movies&quot; 
+##  [5] &quot;Most Popular TV Shows&quot;     &quot;Top 250 TV Shows&quot;         
+##  [7] &quot;Lowest Rated Movies&quot;       &quot;Most Popular Celebs&quot;      
 ##  [9] &quot;Top Rated Movies by Genre&quot; &quot;Recently viewed&quot;</code></pre>
+</div>
+<div id="exercise-6" class="section level3">
+<h3>Exercise 6</h3>
+<pre class="r"><code>titles &lt;- str_subset(titles, &quot;^[0123456789]&quot;)</code></pre>
+</div>
+<div id="exercise-7" class="section level3">
+<h3>Exercise 7</h3>
+<p>Now, the length of the vector is 250.</p>
+<pre class="r"><code>print(length(titles))</code></pre>
+<pre><code>## [1] 250</code></pre>
+</div>
+<div id="exercise-8" class="section level3">
+<h3>Exercise 8</h3>
+<pre class="r"><code>titles &lt;-str_remove(titles, &quot;^[0123456789]+\\. &quot;)
+print(head(titles,10))</code></pre>
+<pre><code>##  [1] &quot;The Shawshank Redemption&quot;                         
+##  [2] &quot;The Godfather&quot;                                    
+##  [3] &quot;The Dark Knight&quot;                                  
+##  [4] &quot;The Godfather Part II&quot;                            
+##  [5] &quot;12 Angry Men&quot;                                     
+##  [6] &quot;Schindler&#39;s List&quot;                                 
+##  [7] &quot;The Lord of the Rings: The Return of the King&quot;    
+##  [8] &quot;Pulp Fiction&quot;                                     
+##  [9] &quot;The Lord of the Rings: The Fellowship of the Ring&quot;
+## [10] &quot;The Good, the Bad and the Ugly&quot;</code></pre>
+</div>
+<div id="exercise-9" class="section level3">
+<h3>Exercise 9</h3>
+<pre class="r"><code>years &lt;- page %&gt;%
+  html_nodes(&quot;.cli-title-metadata span:nth-child(1)&quot;) %&gt;%
+  html_text() %&gt;%
+  as.numeric()
+
+print(head(years, 10))</code></pre>
+<pre><code>##  [1] 1994 1972 2008 1974 1957 1993 2003 1994 2001 1966</code></pre>
 </div>
 
 

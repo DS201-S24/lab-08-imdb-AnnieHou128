@@ -56,3 +56,35 @@ The last 10 are not actural movie titles - those are the contents in the bottom 
 print(tail(titles,10))
 ```
 
+### Exercise 6
+
+```{r ex6}
+titles <- str_subset(titles, "^[0123456789]")
+```
+
+### Exercise 7
+
+Now, the length of the vector is 250.
+
+```{r ex7}
+print(length(titles))
+```
+
+### Exercise 8
+
+```{r ex8}
+titles <-str_remove(titles, "^[0123456789]+\\. ")
+print(head(titles,10))
+```
+
+### Exercise 9
+
+```{r ex9}
+years <- page %>%
+  html_nodes(".cli-title-metadata span:nth-child(1)") %>%
+  html_text() %>%
+  as.numeric()
+
+print(head(years, 10))
+```
+
