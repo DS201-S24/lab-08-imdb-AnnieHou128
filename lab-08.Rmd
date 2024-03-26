@@ -1,7 +1,7 @@
 ---
 title: "Lab 8 - IMDB Top 250"
-author: "Insert your name here"
-date: "Insert date here"
+author: "Annie Hou"
+date: "03/26/2024"
 output: html_document
 ---
 
@@ -16,22 +16,43 @@ library(rvest)
 
 ### Exercise 1
 
-Remove this text, and add your answer for Exercise 1 here.
-Add code chunks as needed.
-Don't forget to label your code chunk.
-Do not use spaces in code chunk labels.
+```{r}
+url <- "https://www.imdb.com/chart/top"
+page <- read_html(url)
+```
+
 
 ### Exercise 2
 
-Remove this text, and add your answer for Exercise 1 here.
-Add code chunks as needed.
-Don't forget to label your code chunk.
-Do not use spaces in code chunk labels.
+The class is xml_document and xml_node.
+
+```{r ex2}
+class(page)
+```
+
 
 ### Exercise 3
 
-...
+```{r ex3}
+titles <- page %>% 
+    html_nodes(".ipc-title__text") %>% 
+    html_text()
+```
 
-Add exercise headings as needed.
+### Exercise 4
 
+The top 10 are not all titles of the movies; it includes the general titles for the IMDb charts.
+
+```{r ex4}
+print(head(titles,10))
+```
+
+
+### Exercise 5
+
+The last 10 are not actural movie titles - those are the contents in the bottom of the page.
+
+```{r ex5}
+print(tail(titles,10))
+```
 
