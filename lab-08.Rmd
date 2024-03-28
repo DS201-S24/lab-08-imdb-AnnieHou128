@@ -88,3 +88,16 @@ years <- page %>%
 print(head(years, 10))
 ```
 
+
+### Exercise 10
+
+```{r ex10}
+ratings <- page %>%
+  html_nodes(".ipc-rating-star--imdb") %>%
+  html_attr("aria-label") %>%
+  str_sub(-3, -1) %>%
+  as.numeric()
+
+print(head(ratings, 10))
+```
+

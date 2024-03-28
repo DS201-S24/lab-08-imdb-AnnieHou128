@@ -400,10 +400,10 @@ titles for the IMDb charts.</p>
 <p>The last 10 are not actural movie titles - those are the contents in
 the bottom of the page.</p>
 <pre class="r"><code>print(tail(titles,10))</code></pre>
-<pre><code>##  [1] &quot;Charts&quot;                    &quot;Top Box Office (US)&quot;      
-##  [3] &quot;Most Popular Movies&quot;       &quot;Top Rated English Movies&quot; 
-##  [5] &quot;Most Popular TV Shows&quot;     &quot;Top 250 TV Shows&quot;         
-##  [7] &quot;Lowest Rated Movies&quot;       &quot;Most Popular Celebs&quot;      
+<pre><code>##  [1] &quot;Top Box Office (US)&quot;       &quot;Most Popular Movies&quot;      
+##  [3] &quot;Top Rated English Movies&quot;  &quot;Most Popular TV Shows&quot;    
+##  [5] &quot;Top 250 TV Shows&quot;          &quot;Lowest Rated Movies&quot;      
+##  [7] &quot;Most Popular Celebs&quot;       &quot;Movie News&quot;               
 ##  [9] &quot;Top Rated Movies by Genre&quot; &quot;Recently viewed&quot;</code></pre>
 </div>
 <div id="exercise-6" class="section level3">
@@ -440,6 +440,17 @@ print(head(titles,10))</code></pre>
 
 print(head(years, 10))</code></pre>
 <pre><code>##  [1] 1994 1972 2008 1974 1957 1993 2003 1994 2001 1966</code></pre>
+</div>
+<div id="exercise-10" class="section level3">
+<h3>Exercise 10</h3>
+<pre class="r"><code>ratings &lt;- page %&gt;%
+  html_nodes(&quot;.ipc-rating-star--imzb&quot;) %&gt;%
+  html_attr(&quot;aria-label&quot;) %&gt;%
+  str_sub(-3, -1) %&gt;%
+  as.numeric()
+
+print(head(ratings, 10))</code></pre>
+<pre><code>## numeric(0)</code></pre>
 </div>
 
 
