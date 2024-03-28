@@ -101,3 +101,36 @@ ratings <- page %>%
 print(head(ratings, 10))
 ```
 
+### Exercise 11
+
+```{r ex11}
+imdb_top_250 <- data.frame(
+  title = titles,
+  year = years,
+  rating = ratings
+)
+
+# print(imdb_top_250)
+```
+
+### Exercise 12
+
+```{r ex12}
+imdb_top_250 <- imdb_top_250 %>%
+  mutate(rank = 1:nrow(imdb_top_250))
+
+head(imdb_top_250, 5)
+```
+
+### Exercise 13
+
+```{r ex13}
+ggplot(imdb_top_250, aes(x = year, y = rating)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +  
+  theme_minimal() +  
+  labs(title = "IMDb Top 250 Movies Ratings Over Time",
+       x = "Year",
+       y = "Rating")
+```
+
